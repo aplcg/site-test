@@ -1,0 +1,55 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+
+/* Base Settings */
+body { font-family: 'Space Grotesk', sans-serif; background-color: #ffffff; color: #111111; margin: 0; padding: 0; }
+
+/* CUSTOM CURSOR */
+body.has-custom-cursor { cursor: none; }
+#cursor-dot, #cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; display: block; }
+#cursor-dot { width: 8px; height: 8px; background-color: black; }
+#cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(0,0,0,0.5); transition: width 0.2s, height 0.2s, background-color 0.2s; }
+body.hovering #cursor-outline { width: 60px; height: 60px; background-color: rgba(0,0,0,0.05); border-color: black; }
+
+/* Background pattern */
+.grid-bg { background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px); background-size: 50px 50px; }
+
+/* Parallax layers */
+.parallax-layer { width: 200vw; height: 200vh; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); will-change: transform; overflow: visible; }
+
+/* Viewport frame */
+.viewport-frame { position: fixed; inset: 10px; border: 1px solid rgba(0,0,0,0.06); pointer-events: none; z-index: 2000; border-radius: 8px; box-shadow: inset 0 0 40px rgba(0,0,0,0.03); }
+
+/* World container */
+#grids { position: absolute; left: 50%; top: 50%; width: 100vw; height: 100vh; transform: translate(-50%, -50%); transition: transform 220ms ease; will-change: transform; transform-origin: 50% 50%; pointer-events: auto; overflow: visible; }
+
+/* Quadrant watermark */
+.quadrant-watermark { position: fixed; transform: translate(-50%, -50%); font-weight: 800; font-size: clamp(100px, 5.2vw, 120px); color: rgba(0,0,0,0.045); pointer-events: none; z-index: 10; text-align: center; letter-spacing: 0.12em; mix-blend-mode: multiply; user-select: none; max-width: 48vw; }
+
+/* Glass Navigation Bar */
+.glass-nav { position: fixed; top: 0; left: 0; width: 100%; height: 64px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+.glass-nav a { color: #333; text-decoration: none; font-size: 0.9rem; letter-spacing: 0.05em; transition: color 0.3s; }
+.glass-nav a:hover { color: black; }
+
+.no-select { user-select: none; }
+
+/* Cards */
+.previewCard { position: fixed; }
+.previewCard img.backdrop { object-fit: cover; pointer-events: none; user-select: none; width: 100%; height: 100%; display: block; transition: transform 500ms ease-in-out; }
+.previewCard:hover { transform: rotate(var(--rot, 0deg)) scale(1.06); }
+.previewCard:hover img.backdrop { transform: scale(1.02); }
+
+/* Overlay content */
+.content { position: absolute; left: 1rem; right: 1rem; bottom: calc(1rem - 6px); z-index: 2; display: grid; gap: 0.25rem; color: #fff; }
+.title { font-size: 1.2rem; font-weight: 700; line-height: 1.05; }
+.category { text-transform: uppercase; font-weight: 700; letter-spacing: 0.12rem; opacity: 0.6; font-size: 0.85rem; }
+.description { font-size: 0.95rem; line-height: 1.25; display: grid; grid-template-columns: 1fr auto; gap: .5rem; }
+.description p { margin: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.description span { transform: translateY(-0.1rem); font-size: 1.6rem; display: grid; place-items: center; width: 2rem; height: 2rem; }
+.tag-pill { display: inline-block; padding: 0.18rem 0.5rem; background: rgba(0,0,0,0.35); color: #fff; border-radius: 999px; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.4rem; text-transform: capitalize; }
+
+/* Controls */
+.controls { pointer-events: auto; }
+.filter-btn { background: transparent; border: none; padding: 8px 12px; border-radius: 999px; font-weight: 700; cursor: pointer; transition: background 180ms, color 180ms, transform 120ms; }
+.filter-btn:hover { background: rgba(0,0,0,0.06); transform: translateY(-1px); }
+.filter-btn.active { background: #111; color: #fff; }
